@@ -52,8 +52,8 @@ export default function Navbar() {
                         <span className="font-display text-base font-bold uppercase tracking-wide text-brand-ink leading-tight group-hover:text-brand-darkred transition-colors">
                             SMK PLUS PELITA NUSANTARA
                         </span>
-                        <span className="text-[10px] uppercase font-semibold tracking-wider text-brand-darkred mt-0.5">
-                            We Are Different
+                        <span className="text-[10px] italic font-semibold tracking-wider text-brand-darkred mt-0.5">
+                            Succsessed By Character
                         </span>
                     </div>
                 </Link>
