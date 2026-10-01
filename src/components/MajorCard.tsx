@@ -11,7 +11,7 @@ export default function MajorCard({ major }: { major: Major }) {
             aria-label={`${name} (${major.code})`}
             className="group block overflow-hidden rounded-card shadow-softpill transition-transform duration-300 hover:-translate-y-1"
         >
-            <div className="relative aspect-4/5 overflow-hidden bg-linear-to-b from-brand-rose to-brand-ink">
+            <div className="relative aspect-4/7 overflow-hidden bg-linear-to-b from-brand-rose to-brand-ink">
                 {major.image ? (
                     <img
                         src={major.image}
@@ -35,9 +35,9 @@ export default function MajorCard({ major }: { major: Major }) {
                 </span>
             </div>
 
-            <div className="bg-brand-warmred py-6 md:py-8 text-center font-display text-3xl md:text-4xl font-bold uppercase tracking-wide text-white transition-colors group-hover:bg-brand-signal">
+            {/* <div className="bg-brand-warmred py-6 md:py-8 text-center font-display text-3xl md:text-4xl font-bold uppercase tracking-wide text-white transition-colors group-hover:bg-brand-signal">
                 {major.code}
-            </div>
+            </div> */}
         </Link>
     )
 }
