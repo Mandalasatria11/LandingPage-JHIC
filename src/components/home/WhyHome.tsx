@@ -5,7 +5,7 @@ const stats = [
     { value: "92%", label: "Lulusan terserap kerja" },
     { value: "120+", label: "Mitra industri" },
     { value: "5", label: "Kompetensi keahlian" },
-    { value: "3 bln", label: "Program PKL" },
+    { value: "6 bln", label: "Program PKL" },
 ];
 
 const reasons: { title: string; desc: string; icon: ReactNode }[] = [
@@ -30,8 +30,8 @@ const reasons: { title: string; desc: string; icon: ReactNode }[] = [
         ),
     },
     {
-        title: "Berkarakter & Terpantau",
-        desc: "Pembinaan akhlak dan kedisiplinan berjalan setiap hari, dan orang tua rutin menerima laporan perkembangan serta mudah menghubungi wali kelas.",
+        title: "Terampil, Entrepreneur, Religius",
+        desc: "Membentuk siswa yang terampil, berjiwa wirausaha, dan berakhlak melalui pembinaan karakter, kedisiplinan, serta pendampingan yang berkelanjutan.",
         icon: (
             <>
                 <path d="M12 3 4 6v6c0 4.5 3.4 8.2 8 9 4.6-.8 8-4.5 8-9V6l-8-3z" />
@@ -50,11 +50,12 @@ export default function WhyHome() {
                         Untuk Bapak &amp; Ibu Orang Tua
                     </p>
                     <h2 className="mt-3 font-display text-3xl md:text-4xl font-bold uppercase tracking-wide leading-tight">
-                        Mengapa Memilih SMK Plus Pelita Nusantara?
+                        Mengapa SMK Plus Pelita Nusantara?
                     </h2>
                     <p className="mt-4 text-base md:text-lg leading-relaxed text-brand-ink/70">
-                        Kami menyiapkan putra-putri Anda bukan hanya untuk lulus, tetapi untuk siap bekerja,
-                        berwirausaha, atau melanjutkan kuliah dengan bekal keahlian yang nyata.
+                        Kami mempersiapkan putra-putri Anda menjadi lulusan yang kompeten, mandiri, dan 
+                        siap menghadapi masa depan — baik untuk bekerja, berwirausaha, maupun melanjutkan pendidikan 
+                        ke jenjang yang lebih tinggi.
                     </p>
                 </div>
 
