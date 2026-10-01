@@ -81,9 +81,9 @@ export default function HeroMajor({ major }: { major: Major }) {
                 <div className="w-full max-w-60 sm:max-w-72 mx-auto md:w-72 lg:w-80 md:max-w-none animate-fade-up [animation-delay:150ms]">
                     <div className="overflow-hidden rounded-card ring-1 ring-white/10 shadow-2xl shadow-black/40 transition-transform duration-500 md:rotate-2 md:hover:rotate-0">
                         <div className="relative aspect-4/5 overflow-hidden bg-linear-to-b from-brand-rose to-brand-ink">
-                            {major.image ? (
+                            {major.image_detail ? (
                                 <img
-                                    src={major.image}
+                                    src={major.image_detail}
                                     alt={`Siswa jurusan ${name}`}
                                     className="absolute inset-0 w-full h-full object-cover"
                                 />
