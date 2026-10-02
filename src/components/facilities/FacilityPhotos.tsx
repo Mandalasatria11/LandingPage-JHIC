@@ -1,0 +1,106 @@
+import { useEffect, useRef, useState, type FocusEvent, type ReactNode } from "react";
+import Icon from "../Icon";
+import type { Facility } from "../../data/facilities";
+
+const AUTOPLAY_DELAY = 4000;
+
+// Kotak foto fasilitas. Kalau fotonya lebih dari satu, foto berganti otomatis tiap beberapa detik dan muncul
+// thumbnail untuk memilih foto; semua foto ditumpuk lalu dipudarkan bergantian. Kalau belum ada foto, tampil ikon fasilitas.
+// className = rasio & sudut kotak, iconSize = ukuran ikon, thumbsPosition = letak deretan thumbnail,
+// thumbSize = ukuran tiap thumbnail. children = lapisan di atas foto (mis. gradasi & nomor), di bawah thumbnail.
+export default function FacilityPhotos({
+    facility,
+    className,
+    iconSize,
+    thumbsPosition = "right-3 bottom-3",
+    thumbSize = "w-10 h-7",
+    children,
+}: {
+    facility: Facility;
+    className: string;
+    iconSize: string;
+    thumbsPosition?: string;
+    thumbSize?: string;
+    children?: ReactNode;
+}) {
+    const ref = useRef<HTMLDivElement>(null);
+    const [active, setActive] = useState(0);
+    const [paused, setPaused] = useState(false);
+    const [onScreen, setOnScreen] = useState(false);
+    const { images, title } = facility;
+
+    // Hanya berganti saat kotaknya terlihat. Setiap fasilitas dipasang dua kali (carousel HP & daftar desktop, salah
+    // satunya disembunyikan) dan kartu carousel di luar layar juga tidak terlihat, jadi semua itu tidak ikut berganti.
+    useEffect(() => {
+        const el = ref.current;
+        if (!el || images.length < 2) return;
+        const observer = new IntersectionObserver(([entry]) => setOnScreen(entry?.isIntersecting ?? false));
+        observer.observe(el);
+        return () => observer.disconnect();
+    }, [images.length]);
+
+    // Timer dipasang ulang setiap foto berganti, jadi klik thumbnail juga mengulang hitungan. Berhenti selama
+    // kursor/fokus ada di kotak foto, dan tidak jalan sama sekali kalau pengguna memilih kurangi gerakan.
+    useEffect(() => {
+        if (images.length < 2 || paused || !onScreen) return;
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        const timer = window.setTimeout(() => setActive((i) => (i + 1) % images.length), AUTOPLAY_DELAY);
+        return () => window.clearTimeout(timer);
+    }, [active, paused, onScreen, images.length]);
+
+    // Pindah fokus antar-thumbnail tidak dihitung keluar dari kotak foto
+    const handleBlur = (e: FocusEvent<HTMLDivElement>) => {
+        if (!e.currentTarget.contains(e.relatedTarget)) setPaused(false);
+    };
+
+    return(
+        <div
+            ref={ref}
+            className={`group relative overflow-hidden bg-linear-to-br from-brand-signal to-brand-deepred ${className}`}
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+            onFocus={() => setPaused(true)}
+            onBlur={handleBlur}
+        >
+            {images.length > 0 ? (
+                images.map((image, i) => (
+                    <img
+                        key={image.id}
+                        src={image.url}
+                        alt={images.length > 1 ? `${title} (foto ${i + 1} dari ${images.length})` : title}
+                        aria-hidden={i !== active}
+                        className={`absolute inset-0 w-full h-full object-cover transition-[opacity,scale] duration-500 group-hover:scale-105 ${
+                            i === active ? "opacity-100" : "opacity-0"
+                        }`}
+                        loading="lazy"
+                    />
+                ))
+            ) : (
+                <div className="absolute inset-0 flex items-center justify-center text-white/15 transition-transform duration-500 group-hover:scale-110">
+                    <Icon name={facility.icon} className={iconSize} />
+                </div>
+            )}
+
+            {children}
+
+            {images.length > 1 && (
+                <div className={`absolute flex gap-2 ${thumbsPosition}`}>
+                    {images.map((image, i) => (
+                        <button
+                            key={image.id}
+                            type="button"
+                            onClick={() => setActive(i)}
+                            aria-label={`Tampilkan foto ${i + 1} dari ${images.length}: ${title}`}
+                            aria-pressed={i === active}
+                            className={`overflow-hidden rounded-md shadow-md shadow-brand-ink/30 ring-2 transition ${thumbSize} ${
+                                i === active ? "ring-white" : "ring-white/40 opacity-70 hover:opacity-100"
+                            }`}
+                        >
+                            <img src={image.url} alt="" className="w-full h-full object-cover" loading="lazy" />
+                        </button>
+                    ))}
+                </div>
+            )}
+        </div>
+    )
+}

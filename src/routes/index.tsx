@@ -1,0 +1,40 @@
+import { lazy, Suspense } from "react";
+import { Route, Routes } from "react-router-dom";
+import Home from "../pages/home/Home";
+import About from "../pages/about/About";
+import MajorDetail from "../pages/majors/MajorDetail";
+import Teachers from "../pages/teachers/Teachers";
+import TeacherDetail from "../pages/teachers/TeacherDetail";
+import Facilities from "../pages/facilities/Facilities";
+import News from "../pages/news/News";
+import NewsDetail from "../pages/news/NewsDetail";
+import ProgramDetail from "../pages/programs/ProgramDetail";
+import NotFound from "../pages/notfound/NotFound";
+
+// Panel admin dimuat terpisah, jadi pengunjung situs tidak ikut mengunduh kodenya
+const AdminApp = lazy(() => import("../admin/AdminApp"));
+
+export default function AppRoutes() {
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/tentang" element={<About />} />
+      <Route path="/profil-guru" element={<Teachers />} />
+      <Route path="/profil-guru/:id" element={<TeacherDetail />} />
+      <Route path="/fasilitas" element={<Facilities />} />
+      <Route path="/jurusan/:slug" element={<MajorDetail />} />
+      <Route path="/berita" element={<News />} />
+      <Route path="/berita/:slug" element={<NewsDetail />} />
+      <Route path="/program/:slug" element={<ProgramDetail />} />
+      <Route
+        path="/admin/*"
+        element={
+          <Suspense fallback={<div className="min-h-svh bg-brand-softmist/50" />}>
+            <AdminApp />
+          </Suspense>
+        }
+      />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  );
+}
