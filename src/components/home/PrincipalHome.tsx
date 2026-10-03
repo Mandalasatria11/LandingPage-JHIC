@@ -10,7 +10,7 @@ export default function PrincipalHome() {
                         <img
                             src={fotoKepsek}
                             alt="Kepala Sekolah SMK Plus Pelita Nusantara"
-                            className="w-full aspect-4/5 object-cover rounded-card bg-brand-softmist shadow-2xl"
+                            className="w-full aspect-auto object-cover "
                             loading="lazy"
                         />
                     </figure>
