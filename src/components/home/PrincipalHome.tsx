@@ -26,8 +26,8 @@ export default function PrincipalHome() {
                             peluang Praktik Kerja Lapangan serta karier di berbagai industri mitra.
                         </p>
                         <figcaption className="mt-4 text-center md:text-justify">
-                            <span className="block font-semibold">Drs. Ahmad Fauzi, M.Pd.</span>
-                            <span className="text-sm text-brand-ink/60">Kepala Sekolah</span>
+                            <span className="block font-semibold">Ibu Sri Mildawati, M.Pd</span>
+                            <span className="text-sm text-brand-ink/60">Kepala Sekolah SMK Plus Pelita Nusantara</span>
                         </figcaption>
                     </div>
                 </div>
