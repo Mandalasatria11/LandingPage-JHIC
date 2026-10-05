@@ -6,6 +6,8 @@ import "swiper/css";
 import LoadError from "../LoadError";
 import Skeleton from "../Skeleton";
 import { SketchArrow } from "../SketchFrame";
+import { SketchUnderline } from "../SketchFrame";
+import SketchFrame from "../SketchFrame";
 import type { Facility } from "../../data/facilities";
 import { useFacilities } from "../../lib/content";
 
@@ -20,9 +22,9 @@ export default function FacilitiesHome() {
         <section className="relative z-10 overflow-hidden bg-white text-brand-ink px-6 py-20 md:py-28">
             <div className="relative max-w-6xl mx-auto">
                 <h2 className="text-center text-balance font-display text-3xl md:text-4xl font-bold uppercase tracking-wide leading-tight">
-                    <span className="mx-auto mb-4 block h-1.5 w-20 bg-brand-warmred" aria-hidden="true" />
-                    Fasilitas Penunjang{" "}
-                    <span className="text-brand-darkred">Belajar &amp; Berkarya SMK Plus Pelita Nusantara</span>
+                    <SketchFrame     className="-ml-4 md:-ml-5">Fasilitas Penunjang{" "}
+                        <span className="text-brand-darkred">Belajar &amp; Berkarya SMK Plus Pelita Nusantara</span>
+                    </SketchFrame>
                 </h2>
 
                 {error ? (

@@ -24,7 +24,7 @@ export default function MajorCard({ major }: { major: Major }) {
             )}
 
             {/* aspect-4/5 menentukan tinggi kartu di atas label */}
-            <div className="relative aspect-4/5">
+            <div className="relative aspect-4/7">
                 {!major.image && (
                     <div className="absolute inset-0 flex items-center justify-center text-brand-ink/20">
                         <Icon name={major.icon} className="w-16 h-16" />
@@ -33,6 +33,27 @@ export default function MajorCard({ major }: { major: Major }) {
 
                 <div className="absolute inset-x-0 bottom-0 h-1/2 bg-linear-to-t from-black/80 to-transparent" />
 
+                <div className="absolute top-4 left-4 flex items-center gap-2 z-10">
+    <div className="w-6 h-8 flex items-center justify-center">
+        <img
+            src={major.cardlogo}
+            alt=""
+            className="w-8 h-8 object-contain"
+        />
+    </div>
+
+    <div className="h-10 w-px bg-white/70" />
+
+    <div className="flex flex-col">
+        <span className="text-base font-bold text-white">
+            {major.cardtagline}
+        </span>
+        <span className="text-xs text-white/80 italic">
+            {major.shorttagline}
+        </span>
+    </div>
+</div>
+                
                 <span className="absolute bottom-3 right-3 flex items-center gap-1 text-sm font-semibold text-white">
                     See More
                     <span className="text-brand-warmred">
@@ -41,9 +62,6 @@ export default function MajorCard({ major }: { major: Major }) {
                 </span>
             </div>
 
-            <div className="relative z-10 bg-linear-to-r from-brand-signal to-brand-darkred py-6 md:py-8 text-center font-display text-3xl md:text-4xl font-bold uppercase tracking-wide text-white transition-[filter] duration-300 group-hover:brightness-90">
-                {major.code}
-            </div>
         </Link>
     )
 }

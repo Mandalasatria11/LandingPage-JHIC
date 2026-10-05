@@ -36,8 +36,8 @@ const reasons: { title: string; desc: string; icon: ReactNode }[] = [
         ),
     },
     {
-        title: "Berkarakter & Terpantau",
-        desc: "Pembinaan akhlak dan kedisiplinan berjalan setiap hari, dan orang tua rutin menerima laporan perkembangan serta mudah menghubungi wali kelas.",
+        title: "Terampil, Entrepreneur, Religius",
+        desc: "Membentuk siswa yang terampil, berjiwa wirausaha, dan berakhlak melalui pembinaan karakter, kedisiplinan, serta pendampingan yang berkelanjutan.",
         icon: (
             <>
                 <path d="M12 3 4 6v6c0 4.5 3.4 8.2 8 9 4.6-.8 8-4.5 8-9V6l-8-3z" />

@@ -19,6 +19,13 @@ import fotoHeroCardImageRPL from "../assets/images/majors/rpl/fotoRPL.png";
 import fotoHeroCardImageTKJ from "../assets/images/majors/tkj/fotoTKJ.png";
 import fotoHeroCardImagePKM from "../assets/images/majors/pkm/fotoPKM.png";
 import fotoHeroCardImageTOI from "../assets/images/majors/toi/fotoTOI.png";
+import logoMM from "../assets/images/LogoJurusan/Logo Divisi MM.png";
+import LogoRPL from "../assets/images/LogoJurusan/Logo Divisi RPL.png";
+import LogoTKJ from "../assets/images/LogoJurusan/Logo Divisi TKJ.png";
+import LogoPKM from "../assets/images/LogoJurusan/Logo Divisi PKM.png";
+import LogoTOI from "../assets/images/LogoJurusan/Logo Divisi TOI.png";
+
+
 
 // ini bagian foto kegiatan Devacto (nama file harus sama persis, huruf besar-kecilnya juga)
 import fotoDevactoMM1 from "../assets/images/devacto/mm/DKV5.jpeg";
@@ -86,6 +93,10 @@ export type Major = {
     image?: string; // foto siswa (PNG tanpa background paling bagus), contoh: import fotoRPL from "../assets/images/rpl.png"
     heroImage?: string; // foto kegiatan untuk latar hero (ditampilkan blur), kalau kosong pakai foto gedung sekolah
     heroCardImage?: string; // foto kegiatan untuk kartu hero (ditampilkan jelas), kalau kosong pakai foto gedung sekolah
+    cardtagline?: string; //nama jurusan pada card
+    shorttagline?: string; //kepanjangan nya 
+    cardlogo?: string; //Logo jurusan yang di tampilkan pada card
+
 };
 
 // TODO: ganti deskripsi dengan kurikulum asli & tambahkan foto siswa tiap jurusan
@@ -97,6 +108,8 @@ export const majors: Major[] = [
         slug: "multimedia",
         icon: "camera",
         highlight: "Multimedia",
+        cardtagline:"MM",
+        shorttagline:"Multimedia",
         rest: "",
         tagline: "Ubah Ide Jadi Karya Visual yang Bercerita",
         desc: "Program yang mempelajari pembuatan konten visual dan digital untuk kebutuhan media, periklanan, dan industri kreatif.",
@@ -145,6 +158,7 @@ export const majors: Major[] = [
         image: fotoLandingMM,
         heroImage: fotoKelasMM,
         heroCardImage: fotoHeroCardImageMM,
+        cardlogo: logoMM,
     },
     {
         code: "RPL",
@@ -152,6 +166,8 @@ export const majors: Major[] = [
         icon: "code",
         highlight: "Rekayasa",
         rest: "Perangkat Lunak",
+        cardtagline: "RPL",
+        shorttagline: "Rekayasa Perangkat Lunak",
         tagline: "Bangun Aplikasi yang Dipakai Banyak Orang",
         desc: "Program yang mempelajari perancangan dan pembuatan aplikasi, mulai dari logika pemrograman hingga aplikasi yang siap dipakai pengguna.",
         focus: [
@@ -198,13 +214,16 @@ export const majors: Major[] = [
         careers: ["Web Developer", "Mobile App Developer", "Software Engineer", "UI/UX Designer", "Software Tester"],
         image: fotoLandingRPL,
         heroImage: fotoKelasRPL,
-        heroCardImage: fotoHeroCardImageRPL
+        heroCardImage: fotoHeroCardImageRPL,
+        cardlogo: LogoRPL,
     },
     {
         code: "TKJ",
         slug: "teknik-komputer-jaringan",
         icon: "network",
         highlight: "Teknik Komputer",
+        cardtagline: "TKJ",
+        shorttagline: "Teknik Komputer Jaringan",
         rest: "dan Jaringan",
         tagline: "Jaga Koneksi Dunia Tetap Menyala",
         desc: "Program yang mempelajari perakitan komputer, pembangunan jaringan, dan pengelolaan server yang dibutuhkan hampir semua perusahaan.",
@@ -252,13 +271,16 @@ export const majors: Major[] = [
         careers: ["Network Administrator", "IT Support", "System Administrator", "Teknisi Komputer", "Network Engineer"],
         image: fotoLandingTKJ,
         heroImage: fotoKelasTKJ,
-        heroCardImage: fotoHeroCardImageTKJ
+        heroCardImage: fotoHeroCardImageTKJ,
+        cardlogo: LogoTKJ,
     },
     {
         code: "PKM",
         slug: "perbankan-keuangan-mikro",
         icon: "bank",
         highlight: "Perbankan",
+        cardtagline: "PKM",
+        shorttagline: "Perbankan Keuangan Mikro",
         rest: "dan Keuangan Mikro",
         tagline: "Melayani dengan Teliti dan Tepercaya",
         desc: "Program yang mempelajari layanan perbankan, akuntansi, dan operasional lembaga keuangan seperti bank, BPR, dan koperasi.",
@@ -306,13 +328,16 @@ export const majors: Major[] = [
         careers: ["Teller", "Customer Service Bank", "Staf Administrasi Keuangan", "Staf Koperasi", "Staf Akuntansi"],
         image: fotoLandingPKM,
         heroImage: fotoKelasPKM,
-        heroCardImage: fotoHeroCardImagePKM
+        heroCardImage: fotoHeroCardImagePKM,
+        cardlogo: LogoPKM,
     },
     {
         code: "TOI",
         slug: "teknik-otomasi-industri",
         icon: "cpu",
         highlight: "Teknik Otomasi",
+        cardtagline: "TOI",
+        shorttagline: "Teknik Otomasi Industri",
         rest: "Industri",
         tagline: "Kendalikan Mesin, Gerakkan Industri",
         desc: "Program yang mempelajari sistem kendali dan otomasi mesin yang digunakan di pabrik dan industri manufaktur.",
@@ -360,6 +385,7 @@ export const majors: Major[] = [
         careers: ["Teknisi Otomasi", "Teknisi Listrik Industri", "Operator Mesin Produksi", "Maintenance Engineer"],
         image: fotoLandingTOI,
         heroImage: fotoKelasTOI,
-        heroCardImage: fotoHeroCardImageTOI
+        heroCardImage: fotoHeroCardImageTOI,
+        cardlogo: LogoTOI,
     },
 ];
